@@ -6,7 +6,7 @@
     </div>
     <div class="navbar-menu">
       <!-- <nav_item :item="menuItems"></nav_item> -->
-      <nav_item></nav_item>
+      <navitem :Items="Items" />
 
       <!-- <li class="navbar-menu-item">
         <a href="#"
@@ -34,41 +34,41 @@
 </template>
 
 <script>
-import nav_item from "./navitem.vue";
+import navitem from "./navitem.vue";
 
 export default {
   name: "navbar",
 
   components: {
-    nav_item: nav_item,
+    navitem,
   },
 
   data() {
     return {
-      menuItems: [
-        { icon: `<i class="fas fa-home"></i>`, text: "Home", url: "#" },
-        {
-          icon: `<i class="fas fa-address-card"></i>`,
-          text: "About Us",
-          url: "#",
-        },
-        {
-          icon: `<i class="fas fa-phone-volume"></i>`,
-          text: "Contact",
-          url: "#",
-        },
-        {
-          icon: `<i class="fas fa-sign-in-alt"></i>`,
-          text: "Subscribe",
-          url: "#",
-        },
-      ],
+      Items: [],
     };
   },
 
-  // props: {
-  //   msg: String
-  // }
+  created() {
+    this.Items = [
+      { icon: `<i class="fas fa-home"></i>`, text: "Home", url: "#" },
+      {
+        icon: `<i class="fas fa-address-card"></i>`,
+        text: "About Us",
+        url: "#",
+      },
+      {
+        icon: `<i class="fas fa-phone-volume"></i>`,
+        text: "Contact",
+        url: "#",
+      },
+      {
+        icon: `<i class="fas fa-sign-in-alt"></i>`,
+        text: "Subscribe",
+        url: "#",
+      },
+    ];
+  },
 };
 </script>
 

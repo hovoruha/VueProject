@@ -1,5 +1,5 @@
 <template>
-  <li class="navbar-menu-item" v-for="item in menuItems">
+  <li class="navbar-menu-item" v-for="(item, i) in Items" :key="i">
     <a :href="item.url"
       ><span class="navbar-menu-icon" v-html="item.icon"></span
       >{{ item.text }}</a
@@ -9,8 +9,11 @@
 
 <script>
 export default {
-  name: "nav_item",
-  // props: ["item"],
+  name: "navitem",
+
+  props: {
+    Items: Array,
+  },
 };
 </script>
 
