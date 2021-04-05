@@ -1,17 +1,20 @@
 <template>
   <div class="wrapper">
     <navbar></navbar>
+    <showcase></showcase>
   </div>
 </template>
 
 <script>
 import navbar from "./components/navbar.vue";
+import showcase from "./components/showcase.vue";
 
 export default {
   name: "App",
 
   components: {
     navbar,
+    showcase,
   },
 };
 </script>

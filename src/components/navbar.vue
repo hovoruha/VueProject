@@ -5,30 +5,7 @@
       <span><i class="fab fa-css3-alt"></i></span>
     </div>
     <div class="navbar-menu">
-      <!-- <nav_item :item="menuItems"></nav_item> -->
       <navitem :Items="Items" />
-
-      <!-- <li class="navbar-menu-item">
-        <a href="#"
-          ><span class="navbar-menu-icon"
-            ><i class="fas fa-address-card"></i></span
-          >About Us</a
-        >
-      </li>
-      <li class="navbar-menu-item">
-        <a href="#"
-          ><span class="navbar-menu-icon"
-            ><i class="fas fa-phone-volume"></i></span
-          >Contact</a
-        >
-      </li>
-      <li class="navbar-menu-item">
-        <a href="register.html"
-          ><span class="navbar-menu-icon"
-            ><i class="fas fa-sign-in-alt"></i></span
-          >Subscribe</a
-        >
-      </li> -->
     </div>
   </div>
 </template>
