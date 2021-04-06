@@ -31,9 +31,15 @@ export default {
       },
 
       inputAtributes: [
-        { type: "text", attr: "placeholder", txt: "username here..." },
-        { type: "password", attr: "placeholder", txt: "password here..." },
-        { type: "submit", attr: "value", txt: "Login" },
+        {
+          type: "text",
+          placeholder: "username here...",
+        },
+        {
+          type: "password",
+          placeholder: "password here...",
+        },
+        { type: "submit", val: "Login" },
       ],
     };
   },

@@ -6,20 +6,19 @@
     </div>
     <div class="card-content">
       <form action="#" class="card-form">
-        <!-- <input type="text" placeholder="username here..." />
-        <input type="password" placeholder="password here..." />
-        <input type="submit" value="Login" /> -->
         <input
           v-for="item in atributes"
           :key="item"
           :type="item.type"
-          :attr="item.attr"
-          :placeholder="item.txt"
+          :placeholder="item.placeholder"
+          :value="item.val"
         />
       </form>
     </div>
     <div class="card-footer">
-      <a :href="footer.footerUrl">{{ footer.footerText }}</a>
+      <a :href="footer.footerUrl" @click.prevent="test">{{
+        footer.footerText
+      }}</a>
     </div>
   </div>
 </template>
@@ -32,6 +31,12 @@ export default {
     title: Object,
     footer: Object,
     atributes: Array,
+  },
+
+  methods: {
+    test() {
+      console.log("rulez la link activ...");
+    },
   },
 };
 </script>
