@@ -1,5 +1,5 @@
 <template>
-  <li class="navbar-menu-item" v-for="(item, i) in Items" :key="i">
+  <li class="navbar-menu-item" v-for="item in Items" :key="item">
     <a :href="item.url"
       ><span class="navbar-menu-icon" v-html="item.icon"></span
       >{{ item.text }}</a

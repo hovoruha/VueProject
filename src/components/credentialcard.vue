@@ -10,10 +10,11 @@
         <input type="password" placeholder="password here..." />
         <input type="submit" value="Login" /> -->
         <input
-          v-for="(input, i) in inputAtributes"
-          :key="i"
-          :type="input.type"
-          :[input.attr]="input.txt"
+          v-for="item in atributes"
+          :key="item"
+          :type="item.type"
+          :attr="item.attr"
+          :placeholder="item.txt"
         />
       </form>
     </div>
