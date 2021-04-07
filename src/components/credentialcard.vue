@@ -53,6 +53,7 @@ export default {
 
   data() {
     return {
+      //TODO: de legat visible:true de event declansat din navbar → navitem
       visible: true,
     };
   },
@@ -68,7 +69,6 @@ export default {
 
   methods: {
     toggleForms() {
-      // console.log("rulez la link activ...");
       this.visible = !this.visible;
     },
   },

@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-/* main resets... */
+/* main resets & global styling... */
 * {
   padding: 0;
   margin: 0;
@@ -48,5 +48,14 @@ a:visited {
   width: 100%;
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* utility classes... */
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
 </style>

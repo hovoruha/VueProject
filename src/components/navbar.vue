@@ -1,11 +1,11 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" :class="hasRegClass ? navRegClass : ''">
     <div class="navbar-logo">
       <span><i class="fab fa-html5"></i></span>
       <span><i class="fab fa-css3-alt"></i></span>
     </div>
     <div class="navbar-menu">
-      <navitem :Items="Items" />
+      <navitem :Items="Items" :isReg="hasRegClass" />
     </div>
   </div>
 </template>
@@ -23,6 +23,9 @@ export default {
   data() {
     return {
       Items: [],
+      //TODO: de implementat actualizarea valorii la event declansat din componenta copil → navitem
+      hasRegClass: false,
+      navRegClass: "reg",
     };
   },
 
@@ -41,7 +44,9 @@ export default {
       },
       {
         icon: `<i class="fas fa-sign-in-alt"></i>`,
+        icon2: `<i class="fas fa-hand-point-left"></i>`,
         text: "Subscribe",
+        text2: "Back to Login",
         url: "#",
       },
     ];
@@ -104,6 +109,7 @@ export default {
 }
 
 .navbar .navbar-menu {
+  height: 100%;
   display: flex;
   flex-flow: row wrap;
   align-items: center;

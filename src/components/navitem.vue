@@ -1,8 +1,17 @@
 <template>
-  <li class="navbar-menu-item" v-for="item in Items" :key="item">
+  <li
+    class="navbar-menu-item"
+    :class="isReg && item.icon2 == null ? 'hidden' : ''"
+    v-for="item in Items"
+    :key="item"
+  >
+    <!--TODO: de folosit cond inline ... isReg && item.icon2 == null ? ... pentru @click event si de legat cu navbar.vue + credentialcard.vue -->
     <a :href="item.url"
-      ><span class="navbar-menu-icon" v-html="item.icon"></span
-      >{{ item.text }}</a
+      ><span
+        class="navbar-menu-icon"
+        v-html="isReg ? item.icon2 : item.icon"
+      ></span
+      >{{ isReg ? item.text2 : item.text }}</a
     >
   </li>
 </template>
@@ -13,19 +22,22 @@ export default {
 
   props: {
     Items: Array,
+    isReg: Boolean,
   },
 };
 </script>
 
 <style scoped>
 .navbar .navbar-menu .navbar-menu-item {
-  margin-right: 20px;
+  height: 100%;
   font-size: 15px;
+  padding: 25px 10px;
   transition: color 0.3s ease;
 }
 
 .navbar .navbar-menu .navbar-menu-item:hover {
   color: red;
+  border-bottom: 2px solid red;
   transition: color 0.3s ease;
 }
 
