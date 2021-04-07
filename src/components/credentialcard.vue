@@ -1,13 +1,14 @@
 <template>
-  <div class="card">
+  <!-- card user login... -->
+  <div class="card" v-if="visible">
     <div class="card-title">
-      <span v-html="title.titleIcon"></span>
-      <span>{{ title.titleText }}</span>
+      <span v-html="title1.titleIcon"></span>
+      <span>{{ title1.titleText }}</span>
     </div>
     <div class="card-content">
       <form action="#" class="card-form">
         <input
-          v-for="item in atributes"
+          v-for="item in atributes1"
           :key="item"
           :type="item.type"
           :placeholder="item.placeholder"
@@ -16,8 +17,31 @@
       </form>
     </div>
     <div class="card-footer">
-      <a :href="footer.footerUrl" @click.prevent="test">{{
-        footer.footerText
+      <a :href="footer1.footerUrl" @click.prevent="toggleForms">{{
+        footer1.footerText
+      }}</a>
+    </div>
+  </div>
+  <!-- card register user... -->
+  <div class="card" v-else>
+    <div class="card-title">
+      <span v-html="title2.titleIcon"></span>
+      <span>{{ title2.titleText }}</span>
+    </div>
+    <div class="card-content">
+      <form action="#" class="card-form">
+        <input
+          v-for="item in atributes2"
+          :key="item"
+          :type="item.type"
+          :placeholder="item.placeholder"
+          :value="item.val"
+        />
+      </form>
+    </div>
+    <div class="card-footer">
+      <a :href="footer2.footerUrl" @click.prevent="toggleForms">{{
+        footer2.footerText
       }}</a>
     </div>
   </div>
@@ -27,15 +51,25 @@
 export default {
   name: "credentialCard",
 
+  data() {
+    return {
+      visible: true,
+    };
+  },
+
   props: {
-    title: Object,
-    footer: Object,
-    atributes: Array,
+    title1: Object,
+    footer1: Object,
+    atributes1: Array,
+    title2: Object,
+    footer2: Object,
+    atributes2: Array,
   },
 
   methods: {
-    test() {
-      console.log("rulez la link activ...");
+    toggleForms() {
+      // console.log("rulez la link activ...");
+      this.visible = !this.visible;
     },
   },
 };
