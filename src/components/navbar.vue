@@ -5,7 +5,12 @@
       <span><i class="fab fa-css3-alt"></i></span>
     </div>
     <div class="navbar-menu">
-      <navitem :Items="Items" :isReg="hasRegClass" />
+      <navitem
+        :Items="Items"
+        :isReg="hasRegClass"
+        @open:subscribe="loadSubscribe"
+        @open:eventfail="loadLogin"
+      />
     </div>
   </div>
 </template>
@@ -23,10 +28,19 @@ export default {
   data() {
     return {
       Items: [],
-      //TODO: de implementat actualizarea valorii la event declansat din componenta copil → navitem
       hasRegClass: false,
       navRegClass: "reg",
     };
+  },
+
+  methods: {
+    loadSubscribe: function() {
+      this.hasRegClass = !this.hasRegClass;
+    },
+
+    loadLogin: function() {
+      this.hasRegClass = false;
+    },
   },
 
   created() {

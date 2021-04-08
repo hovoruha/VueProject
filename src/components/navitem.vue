@@ -6,7 +6,9 @@
     :key="item"
   >
     <!--TODO: de folosit cond inline ... isReg && item.icon2 == null ? ... pentru @click event si de legat cu navbar.vue + credentialcard.vue -->
-    <a :href="item.url"
+    <a
+      :href="item.url"
+      @click="!isReg && item.icon2 ? toggleSubscribe() : activateLogin()"
       ><span
         class="navbar-menu-icon"
         v-html="isReg ? item.icon2 : item.icon"
@@ -23,6 +25,18 @@ export default {
   props: {
     Items: Array,
     isReg: Boolean,
+  },
+
+  emits: ["open:subscribe", "open:eventfail"],
+
+  methods: {
+    toggleSubscribe: function(value) {
+      this.$emit("open:subscribe", value);
+    },
+
+    activateLogin(value) {
+      this.$emit("open:eventfail", value);
+    },
   },
 };
 </script>

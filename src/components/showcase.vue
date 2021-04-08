@@ -80,6 +80,8 @@ export default {
       ],
     };
   },
+
+  methods: {},
 };
 </script>
 
