@@ -1,6 +1,6 @@
 <template>
   <!-- card user login... -->
-  <div class="card" v-if="visible">
+  <div id="loginCard" class="card" v-if="visible">
     <div class="card-title">
       <span v-html="title1.titleIcon"></span>
       <span>{{ title1.titleText }}</span>
@@ -23,7 +23,7 @@
     </div>
   </div>
   <!-- card register user... -->
-  <div class="card" v-else>
+  <div id="subscribeCard" class="card" v-else>
     <div class="card-title">
       <span v-html="title2.titleIcon"></span>
       <span>{{ title2.titleText }}</span>
@@ -48,15 +48,29 @@
 </template>
 
 <script>
+// import { EventBus } from "./eventBus.js";
+
 export default {
   name: "credentialCard",
 
   data() {
     return {
-      //TODO: de legat visible:true de event declansat din navbar → navitem
+      //TODO: de legat visible:true de event declansat din navbar → navitem (click event...)
       visible: true,
     };
   },
+
+  created() {
+    this.$root.$on("testy", (data) => {
+      this.visible = data;
+    });
+  },
+
+  // mounted() {
+  //   this.$root.$on("testy", (data) => {
+  //     this.visible = data;
+  //   });
+  // },
 
   props: {
     title1: Object,

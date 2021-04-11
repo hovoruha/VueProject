@@ -5,10 +5,12 @@
     v-for="item in Items"
     :key="item"
   >
-    <!--TODO: de folosit cond inline ... isReg && item.icon2 == null ? ... pentru @click event si de legat cu navbar.vue + credentialcard.vue -->
+    <!--TODO: de legat cu credentialcard.vue prin $root.$on / eventHub...-->
     <a
       :href="item.url"
-      @click="!isReg && item.icon2 ? toggleSubscribe() : activateLogin()"
+      @click="
+        !isReg && item.icon2 ? [toggleSubscribe(), testing()] : activateLogin()
+      "
       ><span
         class="navbar-menu-icon"
         v-html="isReg ? item.icon2 : item.icon"
@@ -19,6 +21,8 @@
 </template>
 
 <script>
+// import { EventBus } from "../eventBus";
+
 export default {
   name: "navitem",
 
@@ -27,7 +31,7 @@ export default {
     isReg: Boolean,
   },
 
-  emits: ["open:subscribe", "open:eventfail"],
+  emits: ["open:subscribe", "open:eventfail", "testy"],
 
   methods: {
     toggleSubscribe: function(value) {
@@ -36,6 +40,11 @@ export default {
 
     activateLogin(value) {
       this.$emit("open:eventfail", value);
+    },
+
+    testing(data) {
+      this.$root.$emit("testy", data);
+      data = false;
     },
   },
 };
