@@ -34,17 +34,17 @@ export default {
   emits: ["open:subscribe", "open:eventfail", "testy"],
 
   methods: {
-    toggleSubscribe: function(value) {
-      this.$emit("open:subscribe", value);
+    toggleSubscribe: function() {
+      this.$emit("open:subscribe");
     },
 
-    activateLogin(value) {
-      this.$emit("open:eventfail", value);
+    activateLogin() {
+      this.$emit("open:eventfail");
     },
 
-    testing(data) {
-      this.$root.$emit("testy", data);
-      data = false;
+    //nefunctional...
+    testing() {
+      this.$root.$emit("testy");
     },
   },
 };

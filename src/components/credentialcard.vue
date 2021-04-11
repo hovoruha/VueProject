@@ -60,15 +60,9 @@ export default {
     };
   },
 
-  created() {
-    this.$root.$on("testy", (data) => {
-      this.visible = data;
-    });
-  },
-
-  // mounted() {
-  //   this.$root.$on("testy", (data) => {
-  //     this.visible = data;
+  // created() {
+  //   this.$root.$on("testy", () => {
+  //     this.visible = false;
   //   });
   // },
 
