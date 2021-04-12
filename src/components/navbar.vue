@@ -5,17 +5,13 @@
       <span><i class="fab fa-css3-alt"></i></span>
     </div>
     <div class="navbar-menu">
-      <navitem
-        :Items="Items"
-        :isReg="hasRegClass"
-        @open:subscribe="loadSubscribe"
-        @open:eventfail="loadLogin"
-      />
+      <navitem :Items="Items" :isReg="hasRegClass" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import navitem from "./navitem.vue";
 
 export default {
@@ -28,20 +24,17 @@ export default {
   data() {
     return {
       Items: [],
-      hasRegClass: false,
       navRegClass: "reg",
     };
   },
 
-  methods: {
-    loadSubscribe: function() {
-      this.hasRegClass = !this.hasRegClass;
-    },
-
-    loadLogin: function() {
-      this.hasRegClass = false;
-    },
+  computed: {
+    ...mapGetters({
+      hasRegClass: "getNavbarDisplayState",
+    }),
   },
+
+  methods: {},
 
   created() {
     this.Items = [

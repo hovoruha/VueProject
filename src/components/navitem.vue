@@ -5,11 +5,12 @@
     v-for="item in Items"
     :key="item"
   >
-    <!--TODO: de legat cu credentialcard.vue prin $root.$on / eventHub...-->
     <a
       :href="item.url"
       @click="
-        !isReg && item.icon2 ? [toggleSubscribe(), testing()] : activateLogin()
+        !isReg && item.icon2
+          ? [toggleSubscribe(), toggleForms()]
+          : [activateLogin(), toggleForms()]
       "
       ><span
         class="navbar-menu-icon"
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-// import { EventBus } from "../eventBus";
+import { mapMutations } from "vuex";
 
 export default {
   name: "navitem",
@@ -31,21 +32,12 @@ export default {
     isReg: Boolean,
   },
 
-  emits: ["open:subscribe", "open:eventfail", "testy"],
-
   methods: {
-    toggleSubscribe: function() {
-      this.$emit("open:subscribe");
-    },
-
-    activateLogin() {
-      this.$emit("open:eventfail");
-    },
-
-    //nefunctional...
-    testing() {
-      this.$root.$emit("testy");
-    },
+    ...mapMutations({
+      toggleForms: "loginCardStateChange",
+      toggleSubscribe: "activateSubscribe",
+      activateLogin: "activateLogin",
+    }),
   },
 };
 </script>

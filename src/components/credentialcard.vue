@@ -40,16 +40,19 @@
       </form>
     </div>
     <div class="card-footer">
-      <a :href="footer2.footerUrl" @click.prevent="toggleForms">{{
-        footer2.footerText
-      }}</a>
+      <a
+        :href="footer2.footerUrl"
+        @click.prevent="[toggleForms(), toggleSubscribe()]"
+        >{{ footer2.footerText }}</a
+      >
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
+// import { mapMutations } from "vuex";
 
 export default {
   name: "credentialCard",
@@ -64,19 +67,22 @@ export default {
   },
 
   data() {
-    return {
-      //TODO: de legat visible:true de event declansat din navbar → navitem (click event...)
-      visible: true,
-    };
+    return {};
   },
 
   computed: {
     ...mapGetters(["getLoginCardState"]),
   },
 
+  //TODO: de implementat actions:{} → mapActions
   methods: {
-    ...mapMutations({
-      toggleForms: "loginCardStateChange",
+    // ...mapMutations({
+    //   toggleForms: "loginCardStateChange",
+    //   toggleSubscribe: "activateSubscribe",
+    // }),
+    ...mapActions({
+      toggleForms: "toggleRegCard",
+      toggleSubscribe: "toggleRegPage",
     }),
   },
 };
