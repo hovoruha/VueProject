@@ -1,4 +1,9 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import "es6-promise/auto";
+import store from "./store";
 
-createApp(App).mount("#app");
+const app = createApp(App);
+
+app.use(store);
+app.mount("#app");

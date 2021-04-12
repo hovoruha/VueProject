@@ -1,6 +1,6 @@
 <template>
   <!-- card user login... -->
-  <div id="loginCard" class="card" v-if="visible">
+  <div id="loginCard" class="card" v-if="getLoginCardState">
     <div class="card-title">
       <span v-html="title1.titleIcon"></span>
       <span>{{ title1.titleText }}</span>
@@ -48,23 +48,11 @@
 </template>
 
 <script>
-// import { EventBus } from "./eventBus.js";
+import { mapGetters } from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   name: "credentialCard",
-
-  data() {
-    return {
-      //TODO: de legat visible:true de event declansat din navbar → navitem (click event...)
-      visible: true,
-    };
-  },
-
-  // created() {
-  //   this.$root.$on("testy", () => {
-  //     this.visible = false;
-  //   });
-  // },
 
   props: {
     title1: Object,
@@ -75,10 +63,21 @@ export default {
     atributes2: Array,
   },
 
+  data() {
+    return {
+      //TODO: de legat visible:true de event declansat din navbar → navitem (click event...)
+      visible: true,
+    };
+  },
+
+  computed: {
+    ...mapGetters(["getLoginCardState"]),
+  },
+
   methods: {
-    toggleForms() {
-      this.visible = !this.visible;
-    },
+    ...mapMutations({
+      toggleForms: "loginCardStateChange",
+    }),
   },
 };
 </script>
