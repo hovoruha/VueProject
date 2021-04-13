@@ -28,14 +28,16 @@ const store = createStore({
     activateLogin(state) {
       state.navbarDisplaysSubscribe = false;
     },
+
+    // toggleRegPage(state) {
+    //   state.loginCardVisible = !state.loginCardVisible;
+    //   state.navbarDisplaysSubscribe = !state.navbarDisplaysSubscribe;
+    // },
   },
 
   actions: {
-    toggleRegCard({ commit }) {
-      commit("loginCardStateChange");
-    },
-
     toggleRegPage({ commit }) {
+      commit("loginCardStateChange");
       commit("activateSubscribe");
     },
   },

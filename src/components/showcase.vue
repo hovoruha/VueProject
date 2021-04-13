@@ -1,24 +1,28 @@
 <template>
   <div class="showcase">
     <credentialCard
-      :title1="titleLogin"
-      :footer1="footerLogin"
-      :atributes1="loginInputAtributes"
-      :title2="titleRegister"
-      :footer2="footerRegister"
-      :atributes2="registerInputAtributes"
+      :title="getLoginCardState ? titleLogin : titleRegister"
+      :footer="getLoginCardState ? footerLogin : footerRegister"
+      :atributes="
+        getLoginCardState ? loginInputAtributes : registerInputAtributes
+      "
     ></credentialCard>
   </div>
 </template>
 
 <script>
 import credentialCard from "./credentialcard.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "showcase",
 
   components: {
     credentialCard,
+  },
+
+  computed: {
+    ...mapGetters(["getLoginCardState"]),
   },
 
   data() {

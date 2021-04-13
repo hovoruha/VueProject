@@ -1,14 +1,14 @@
 <template>
-  <!-- card user login... -->
-  <div id="loginCard" class="card" v-if="getLoginCardState">
+  <!-- card user login/register... -->
+  <div class="card">
     <div class="card-title">
-      <span v-html="title1.titleIcon"></span>
-      <span>{{ title1.titleText }}</span>
+      <span v-html="title.titleIcon"></span>
+      <span>{{ title.titleText }}</span>
     </div>
     <div class="card-content">
       <form action="#" class="card-form">
         <input
-          v-for="item in atributes1"
+          v-for="item in atributes"
           :key="item"
           :type="item.type"
           :placeholder="item.placeholder"
@@ -17,40 +17,14 @@
       </form>
     </div>
     <div class="card-footer">
-      <a :href="footer1.footerUrl" @click.prevent="toggleForms">{{
-        footer1.footerText
+      <a :href="footer.footerUrl" @click.prevent="toggleSubscribe()">{{
+        footer.footerText
       }}</a>
-    </div>
-  </div>
-  <!-- card register user... -->
-  <div id="subscribeCard" class="card" v-else>
-    <div class="card-title">
-      <span v-html="title2.titleIcon"></span>
-      <span>{{ title2.titleText }}</span>
-    </div>
-    <div class="card-content">
-      <form action="#" class="card-form">
-        <input
-          v-for="item in atributes2"
-          :key="item"
-          :type="item.type"
-          :placeholder="item.placeholder"
-          :value="item.val"
-        />
-      </form>
-    </div>
-    <div class="card-footer">
-      <a
-        :href="footer2.footerUrl"
-        @click.prevent="[toggleForms(), toggleSubscribe()]"
-        >{{ footer2.footerText }}</a
-      >
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import { mapActions } from "vuex";
 // import { mapMutations } from "vuex";
 
@@ -58,32 +32,23 @@ export default {
   name: "credentialCard",
 
   props: {
-    title1: Object,
-    footer1: Object,
-    atributes1: Array,
-    title2: Object,
-    footer2: Object,
-    atributes2: Array,
+    title: Object,
+    footer: Object,
+    atributes: Array,
   },
 
   data() {
     return {};
   },
 
-  computed: {
-    ...mapGetters(["getLoginCardState"]),
-  },
-
-  //TODO: de implementat actions:{} → mapActions
   methods: {
-    // ...mapMutations({
-    //   toggleForms: "loginCardStateChange",
-    //   toggleSubscribe: "activateSubscribe",
-    // }),
     ...mapActions({
-      toggleForms: "toggleRegCard",
       toggleSubscribe: "toggleRegPage",
     }),
+
+    // ...mapMutations({
+    //   toggleSubscribe: "toggleRegPage",
+    // }),
   },
 };
 </script>
